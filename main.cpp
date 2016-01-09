@@ -70,32 +70,39 @@ vector<int> fact(int number)
                     //Увеличение массива и заполнение остатка нулями
                     writeLog("m >= res.size(). Увеличиваем размер массива.");
                     res.resize(size + 1, 0);
-                    writeLog("res.size() = " + to_string(size));
+                    writeLog("res.size() = " + to_string(size + 1));
                 }
-                else
-                {
-                    writeLog("m < res.size(). Размер массива размер не изменяем.");
-                    //Умножение значения разряда на шаговое число
-                    writeLog("Умножаем значение разряда на шаговое число.");
-                    writeLog("d = res[m] * i + div");
-                    int d = res[m] * i + div;
-                    writeLog("d = " + to_string(d));
-                    //В ячейку записываем остаток от деления
-                    writeLog("В ячейку массива записываем остаток от деления.");
-                    writeLog("res[m] = d % 10");
-                    res[m] = d % 10;
-                    writeLog("res[m] = " + to_string(res[m]));
-                    //В остаток сохраняем целую часть
-                    writeLog("В остаток сохраняем целую часть от деления.");
-                    writeLog("div = d / 10");
-                    div = d / 10;
-                    writeLog("div = " + to_string(div));
-                }
+                //Умножение значения разряда на шаговое число
+                writeLog("Умножаем значение разряда на шаговое число.");
+                writeLog("d = res[m] * i + div");
+                int d = res[m] * i + div;
+                writeLog("d = " + to_string(d));
+                //В ячейку записываем остаток от деления
+                writeLog("В ячейку массива записываем остаток от деления.");
+                writeLog("res[m] = d % 10");
+                res[m] = d % 10;
+                writeLog("res[m] = " + to_string(res[m]));
+                //В остаток сохраняем целую часть
+                writeLog("В остаток сохраняем целую часть от деления.");
+                writeLog("div = d / 10");
+                div = d / 10;
+                writeLog("div = " + to_string(div));
+                if (m >= n)
+                    writeLog("m >= n Выход из цикла.");
+                if (div > 0)
+                    writeLog("div <= 0 Выход из цикла.");
             }
+            writeLog("n = m");
             n = m;
+            if (i > number)
+            {
+                writeLog("i > number Выходим из цикла");
+            }
         }
+        writeLog("Ивертируем порядок разрядов в массиве для удобного вывода.");
         //Приводим порядок разрядов в удобный вид
         reverse(res.begin(),res.end());
+        writeLog("Содержимое массива res: " + arrayToString(res));
         return res;
     }
 }
@@ -111,5 +118,11 @@ int main()
     for (int x: res)
         cout << x;
     cout << endl;
+    cout << "Вывести лог вычисления? [y/n]";
+    char temp;
+    cin >> temp;
+    if (temp == 'y')
+        for(string x: messageLog)
+            cout << x << endl;
     return 0;
 }
