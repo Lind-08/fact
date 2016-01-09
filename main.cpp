@@ -2,8 +2,15 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <string>
 
 using namespace std;
+
+vector<string> messages;
+void writeLog(string message)
+{
+    messages.push_back(message);
+}
 
 //Функция вычисления факториала
 vector<int> fact(int number)
