@@ -3,24 +3,40 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <stdio.h>
 
 using namespace std;
 
 vector<string> messages;
+
 void writeLog(string message)
 {
     messages.push_back(message);
 }
+
+string arrayToString(vector<int> array)
+{
+    string msg;
+    for(int x: res)
+        msg += to_string(x) + " ";
+    return msg;
+}
+
 
 //Функция вычисления факториала
 vector<int> fact(int number)
 {
     //Массив значений разрядов
     vector<int> res;
+    writeLog("Создается массив для хранения результата res.");
     //Если число на входе меньше нуля, то вернем его обратно, факториал не определен
+    writeLog("Проверка на возможность вычисления факториала.");
+    writeLog(string("number = ") + to_string(number));
     if (number < 0)
     {
+        writeLog("Значение number меньше нуля. Факториал не определен.");
         res.push_back(number);
+        writeLog("Содержимое массива res: " + arrayToString(res));
         return res;
     }
     //Значение факториала для 0,1
